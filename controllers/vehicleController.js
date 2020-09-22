@@ -81,7 +81,7 @@ exports.patchVehicle = async (req, res, next) => {
     fetchedVechicle.descricao = formData.descricao || fetchedVechicle.descricao;
     fetchedVechicle.vendido = formData.vendido || fetchedVechicle.vendido;
 
-    await fetchedVechicle.save(formData);
+    await fetchedVechicle.save();
 
     return res.status(200).json(fetchedVechicle);
   } catch (err) {

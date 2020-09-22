@@ -22,6 +22,10 @@ Substitua no arquivo .env a variável de ambiente `MONGO_API_KEY_DEV` com sua re
 
 Execute no terminal o comando `node app.js`.
 
+### Para executar os testes unitários:
+
+Execute no terminal o comando `npm test` ou `yarn test`.
+
 ---
 
 ## Arquitetura
