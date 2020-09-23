@@ -24,10 +24,7 @@ function fillDatabaseHandler() {
   if (vehicles instanceof Array) {
     console.log("Iniciando o preenchimento da base de dados...");
 
-    let i = 0;
     for (const vehicle of vehicles) {
-      console.log(i);
-      i++;
       Vehicle.create({
         veiculo: vehicle.veiculo,
         marca: vehicle.marca,
