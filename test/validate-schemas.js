@@ -11,7 +11,7 @@ describe("Create vehicle - form validator", (finish) => {
       req.create_happy_case,
       {},
       (nextCallback) => {
-        expect(nextCallback).to.be.not.null;
+        expect(nextCallback).to.be.undefined;
       }
     );
   });
@@ -33,7 +33,7 @@ describe("Update vehicle (PUT) - form validator", () => {
       req.put_happy_case,
       {},
       (nextCallback) => {
-        expect(nextCallback).to.be.not.null;
+        expect(nextCallback).to.be.undefined;
       }
     );
   });

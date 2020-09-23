@@ -79,9 +79,14 @@ exports.patchVehicle = async (req, res, next) => {
     fetchedVechicle.marca = formData.marca || fetchedVechicle.marca;
     fetchedVechicle.ano = formData.ano || fetchedVechicle.ano;
     fetchedVechicle.descricao = formData.descricao || fetchedVechicle.descricao;
-    fetchedVechicle.vendido = formData.vendido || fetchedVechicle.vendido;
 
-    await fetchedVechicle.save();
+    if (formData.vendido !== undefined) {
+      fetchedVechicle.vendido = formData.vendido;
+    } else {
+      fetchedVechicle.vendido = fetchedVechicle.vendido;
+    }
+
+    await fetchedVechicle.save().catch((err) => console.log(err));
 
     return res.status(200).json(fetchedVechicle);
   } catch (err) {
