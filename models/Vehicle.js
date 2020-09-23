@@ -27,7 +27,7 @@ const Vehicle = new mongoose.Schema(
   {
     timestamps: {
       createdAt: "created",
-      updatedAt: "update",
+      updatedAt: "updated",
     },
   }
 );
