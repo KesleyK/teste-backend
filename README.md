@@ -38,9 +38,11 @@ Execute no terminal o comando `npm test` ou `yarn test`.
 
 - **./form-schemas:** conjunto de validações padronizadas para os tipos de formulário;
 
-- **./middlewares:** conjunto de middlewares a serem executadas antes da chamada dos endpoints. Em tratamentos de erros, a middleware é executada após a chamada.
+- **./middlewares:** conjunto de middlewares a serem executadas antes da chamada dos endpoints. Em tratamentos de erros, a middleware é executada após a chamada;
 
 - **./models:** conjunto de esquemas que representam as entidades da aplicação;
+
+- **./util:** conjunto de abstrações que facilitam no desenvolvimento da aplicação. Ex.: o preenchimento automático da base de dados durante a primeira execução da aplicação;
 
 - **./routes:** endpoints da aplicação;
 

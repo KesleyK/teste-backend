@@ -57,10 +57,14 @@ exports.putVehicle = async (req, res, next) => {
       vendido: req.body.vendido,
     };
 
-    const updatedVehicle = await Vehicle.findOneAndUpdate(id, formData, {
-      new: true,
-      useFindAndModify: false,
-    });
+    const updatedVehicle = await Vehicle.findOneAndUpdate(
+      { _id: id },
+      formData,
+      {
+        new: true,
+        useFindAndModify: false,
+      }
+    );
 
     return res.status(200).json(updatedVehicle);
   } catch (err) {
