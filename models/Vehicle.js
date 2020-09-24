@@ -32,4 +32,4 @@ const Vehicle = new mongoose.Schema(
   }
 );
 
-module.exports = mongoose.model("Vechicle", Vehicle);
+module.exports = mongoose.model("Vehicle", Vehicle);
