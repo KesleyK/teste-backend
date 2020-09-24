@@ -1,0 +1,279 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "Exemplo de documentação - Missão Backend"
+  },
+  "host": "localhost:3000",
+  "basePath": "/",
+  "tags": [
+    {
+      "name": "Veículos",
+      "description": "Entendendo o conceito de veículos na aplicação."
+    }
+  ],
+  "paths": {
+    "/veiculos": {
+      "get": {
+        "tags": ["Veículos"],
+        "summary": "Busca todos os veículos da base de dados",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "limit",
+            "description": "Quantidade de objetos por busca",
+            "schema": {
+              "type": "integer",
+              "example": 50
+            },
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "skip",
+            "description": "Deslocamento inicial da coleção de dados",
+            "schema": {
+              "type": "integer",
+              "example": 10
+            },
+            "required": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Sucesso na operação."
+          },
+          "400": {
+            "description": "Falha na requisição."
+          },
+          "500": {
+            "description": "Erro interno do servidor."
+          }
+        }
+      },
+      "post": {
+        "tags": ["Veículos"],
+        "summary": "Adiciona um novo veículo à base de dados",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Dados do veículo",
+            "schema": {
+              "type": "object",
+              "example": {
+                "veiculo": "Uno",
+                "marca": "Fiat",
+                "vendido": false,
+                "descricao": "Um excelente automóvel",
+                "ano": "12/02/2012"
+              }
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Sucesso na operação. Veículo criado."
+          },
+          "400": {
+            "description": "Falha na requisição."
+          },
+          "500": {
+            "description": "Erro interno do servidor."
+          }
+        }
+      }
+    },
+    "/veiculos/find": {
+      "get": {
+        "tags": ["Veículos"],
+        "summary": "Busca todos os veículos por parâmetro",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "q",
+            "description": "Parâmetro selecionado",
+            "schema": {
+              "type": "string",
+              "example": "veiculo"
+            },
+            "required": true
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "description": "Quantidade de objetos por busca",
+            "schema": {
+              "type": "integer",
+              "example": 50
+            },
+            "required": false
+          },
+          {
+            "in": "query",
+            "name": "skip",
+            "description": "Deslocamento inicial da coleção de dados",
+            "schema": {
+              "type": "integer",
+              "example": 10
+            },
+            "required": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Sucesso na operação."
+          },
+          "400": {
+            "description": "Falha na requisição."
+          },
+          "500": {
+            "description": "Erro interno do servidor."
+          }
+        }
+      }
+    },
+    "/veiculos/{id}": {
+      "get": {
+        "tags": ["Veículos"],
+        "summary": "Busca por um único veículo",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "ID do veículo",
+            "schema": {
+              "type": "string",
+              "example": "5f6bf689592f50248f1448"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Sucesso na operação."
+          },
+          "404": {
+            "description": "Falha na busca de dados."
+          },
+          "500": {
+            "description": "Erro interno do servidor."
+          }
+        }
+      },
+      "put": {
+        "tags": ["Veículos"],
+        "summary": "Atualiza todos os dados do veículo",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "ID do veículo",
+            "schema": {
+              "type": "string",
+              "example": "5f6bf689592f50248f1448"
+            },
+            "required": true
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "type": "object",
+              "example": {
+                "veiculo": "Pálio",
+                "marca": "Fiat",
+                "vendido": true,
+                "descricao": "Um excelente automóvel",
+                "ano": "12/02/2012"
+              }
+            },
+            "description": "Dados do veículo",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Sucesso na operação. Veículo alterado"
+          },
+          "400": {
+            "description": "Falha na requisição."
+          },
+          "500": {
+            "description": "Erro interno do servidor."
+          }
+        }
+      },
+      "patch": {
+        "tags": ["Veículos"],
+        "summary": "Atualiza um ou mais dados do veículo",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "ID do veículo",
+            "schema": {
+              "type": "string",
+              "example": "5f6bf689592f50248f1448"
+            },
+            "required": true
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "type": "object",
+              "example": {
+                "vendido": true
+              }
+            },
+            "description": "Dados do veículo",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Sucesso na operação. Veículo alterado"
+          },
+          "400": {
+            "description": "Falha na requisição."
+          },
+          "500": {
+            "description": "Erro interno do servidor."
+          }
+        }
+      },
+      "delete": {
+        "tags": ["Veículos"],
+        "summary": "Deleta um veículo",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "ID do veículo",
+            "schema": {
+              "type": "string",
+              "example": "5f6bf689592f50248f1448"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Sucesso na operação. Veículo alterado"
+          },
+          "400": {
+            "description": "Falha na requisição."
+          },
+          "500": {
+            "description": "Erro interno do servidor."
+          }
+        }
+      }
+    }
+  },
+  "schemes": ["http"],
+  "consumes": ["application/json"],
+  "produces": ["application/json"]
+}

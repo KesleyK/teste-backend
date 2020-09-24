@@ -2,17 +2,47 @@ const Vehicle = require("../models/Vehicle");
 const ApiError = require("../error/api-error");
 
 exports.getAllVehicles = async (req, res, next) => {
-  const fetchedVehicles = await Vehicle.find();
+  try {
+    const { limit, skip } = req.query;
 
-  return res.status(200).json(fetchedVehicles);
+    const parsedLimit = limit ? parseInt(limit) : null;
+    const parsedSkip = skip ? parseInt(skip) : null;
+
+    const fetchedVehicles = await Vehicle.find()
+      .skip(parsedSkip)
+      .limit(parsedLimit);
+
+    return res.status(200).json(fetchedVehicles);
+  } catch (err) {
+    next(
+      ApiError.badRequest(
+        "Não possível fazer a busca por meio do limite selecionado."
+      )
+    );
+  }
 };
 
 exports.getAllVehiclesByParams = async (req, res, next) => {
-  const { q } = req.query;
+  try {
+    const { q } = req.query;
+    const { limit, skip } = req.query;
 
-  const fetchedVehicles = await Vehicle.find().select(q);
+    const parsedLimit = limit ? parseInt(limit) : null;
+    const parsedSkip = skip ? parseInt(skip) : null;
 
-  return res.status(200).json(fetchedVehicles);
+    const fetchedVehicles = await Vehicle.find()
+      .skip(parsedSkip)
+      .limit(parsedLimit)
+      .select(q);
+
+    return res.status(200).json(fetchedVehicles);
+  } catch (err) {
+    next(
+      ApiError.badRequest(
+        "Não possível fazer a busca por meio do offset selecionado."
+      )
+    );
+  }
 };
 
 exports.getVehicleById = async (req, res, next) => {
@@ -23,7 +53,7 @@ exports.getVehicleById = async (req, res, next) => {
 
     return res.status(200).json(fetchedVechicle);
   } catch (err) {
-    next(ApiError.badRequest("Não foi possível buscar os dados do veículo."));
+    next(ApiError.notFound("Não foi possível buscar os dados do veículo."));
   }
 };
 

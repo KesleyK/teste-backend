@@ -28,6 +28,12 @@ Execute no terminal o comando `npm test` ou `yarn test`.
 
 ---
 
+## API Docs
+
+Os endpoints foram documentados através do serviço Swagger, podendo ser testados por meio da rota: `http://localhost:3000/api-docs/`.
+
+![swagger](./assets/swagger.png)
+
 ## Arquitetura
 
 - **./controllers:** conjunto de arquivos que representam as regras de negócio da aplicação. Ex.: o arquivo vehicleController compõe o CRUD completo da entidade veículo;
@@ -44,6 +50,10 @@ Execute no terminal o comando `npm test` ou `yarn test`.
 
 - **./util:** conjunto de abstrações que facilitam no desenvolvimento da aplicação. Ex.: o preenchimento automático da base de dados durante a primeira execução da aplicação;
 
+- **./assets:** arquivos estáticos disponíveis para uso na aplicação. Ex.: fotos, ícones e PDFs;
+
 - **./routes:** endpoints da aplicação;
+
+- **swagger.json:** metadados da documentação swagger;
 
 - **app.js:** entry point.
